@@ -1,6 +1,6 @@
-import { fetchPokemonSuccess } from './action'
+import { fetchPokemonSuccess, fetchPokemonPending } from './action'
 
-const numberOfPokemon = 20
+const numberOfPokemon = 151
 
 const urls = []
 
@@ -12,13 +12,16 @@ const requests = urls.map(url => fetch(url))
 
 const fetchPokemons = () => {
   return dispatch => {
+
+    dispatch(fetchPokemonPending())
+
     Promise.all(requests)
       .then(responses => Promise.all(responses.map(res => res.json())))
       .then(pokemons => pokemons.map(pokemon => ({
         id: pokemon.id,
         name: pokemon.name,
         captureRate: pokemon.capture_rate,
-        isCatched: false,
+        isCatch: false,
         img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`
       })))
       .then(pokemons => dispatch(fetchPokemonSuccess(pokemons)))

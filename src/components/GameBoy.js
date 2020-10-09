@@ -1,10 +1,11 @@
 import React from "react";
+import { catchPokemon } from "../store/action";
 
 import "./GameBoy.css";
 
 import Screen from "./Screen";
 
-const GameBoy = () => {
+const GameBoy = ( { displayScreen, catchPokemon }) => {
   return (
     <div>
       <div className="gameboy">
@@ -52,20 +53,20 @@ const GameBoy = () => {
               </div>
             </div>
 
-            <div className="ab-button a">
+            <div className="ab-button a" onClick={() => catchPokemon()}>
               <span className="button-text-height">A</span>
             </div>
 
-            <div className="ab-button b">
+            <div className="ab-button b" onClick={() => displayScreen()}>
               <span className="button-text-height">B</span>
             </div>
           </div>
           <div className="bottom-box">
             <div className="pill-button button-select">
-              <label className="select">SELECT</label>
+              <label className="select" onClick={() => displayScreen()}>SELECT</label>
             </div>
             <div className="pill-button button-start">
-              <label className="start">START</label>
+              <label className="start" onClick={() => displayScreen()}>START</label>
             </div>
             <div className="speaker">
               <div className="row1">
