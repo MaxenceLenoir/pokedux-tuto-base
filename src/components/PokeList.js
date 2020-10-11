@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import PokemonItem from "./PokemonItem";
 
-const PokeList = ({ click, pokemons, pending }) => {
+const PokeList = ({ click, pokemons }) => {
   return (
     <div className="list-container">
       <h2>Try : {click}</h2>

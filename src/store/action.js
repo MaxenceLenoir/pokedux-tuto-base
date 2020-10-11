@@ -1,4 +1,3 @@
-export const CLICK = 'CLICK'
 export const FETCH_POKEMON_SUCCESS = 'FETCH_POKEMON_SUCCESS'
 export const FETCH_POKEMON_PENDING = 'FETCH_POKEMON_PENDING'
 export const DISPLAY_SCREEN = 'DISPLAY_SCREEN'
@@ -21,7 +20,7 @@ export const displayScreen = (pokemons) => {
   const random = Math.floor(Math.random() * max) ;
   const onScreen = filterPoke[random];
   return dispatch => (
-    dispatch({ 
+    dispatch({
       type: DISPLAY_SCREEN,
       onScreen
     })

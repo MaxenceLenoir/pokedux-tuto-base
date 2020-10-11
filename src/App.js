@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import "./styles.css";
 import { connect } from 'react-redux'
 
-import { CLICK, displayScreen, catchPokemon }  from './store/action'
+import { displayScreen, catchPokemon }  from './store/action'
 import fetchPokemons from './store/fetchPokemons'
 
 import GameBoy from "./components/GameBoy";
 import PokeList from "./components/PokeList";
 import Loader from "./components/Loader";
 
-const App = ({ handleClick, fetchPokemons, pending, displayScreen, pokemons, catchPokemon }) => {
+const App = ({ fetchPokemons, pending, displayScreen, pokemons, catchPokemon }) => {
   useEffect(() => {
     fetchPokemons()
   }, [fetchPokemons])
@@ -40,7 +40,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchPokemons: () => dispatch(fetchPokemons()),
-    handleClick: () =>  dispatch({ type: CLICK }),
     displayScreen: (pokemons) => dispatch(displayScreen(pokemons)),
     catchPokemon: () => dispatch(catchPokemon())
   } 
